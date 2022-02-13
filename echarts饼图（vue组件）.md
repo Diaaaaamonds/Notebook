@@ -3,6 +3,7 @@
 ![饼图](chart-pie.png)
 
 ```
+//1. 首先创建图表容器，宽高为行内样式，单位必须为px
 <template>
     <div ref="pie" style="width: 400px; height: 400px"></div>
 </template>
@@ -20,10 +21,12 @@ export default class PieChart extends Vue {
     @Ref('pie') pieDom!: HTMLElement;
     charts: any = '';
 
+    //2. 绘制图表，chart初始化在钩子函数中
     mounted() {
         this.drawPie(this.pieDom);
     }
 
+    //3. draw
     drawPie(dom) {
         this.charts = echarts.init(dom);
         this.charts.setOption({

@@ -33,3 +33,21 @@ list.sort((a, b) => {
                 }
             });
 ```
+
+3. 对象数组按某一属性排序
+```
+let shareArr = shareIds
+.sort((a, b) => a - b)
+.map((key) => {
+    let shares = map.get(key) || [];
+    if (shares) {
+        //按每个分片的序号排序（seq）
+        shares = shares.sort((a, b) => a.seq - b.seq);
+    }
+
+    return {
+        shardId: key,
+        shares,
+    };
+});
+```
